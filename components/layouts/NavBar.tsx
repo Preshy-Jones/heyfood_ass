@@ -197,7 +197,7 @@ const NavBar = () => {
       </Box>
       <SideBar closeSideBar={closeSideBar} showSideBar={showSideBar} />
       <Overlay showOverlay={showOverlay} />
-      {/* <Categories showCategories={showCategories} /> */}
+      <Categories showCategories={showCategories} />
     </Box>
   );
 };

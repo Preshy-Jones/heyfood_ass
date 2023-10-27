@@ -23,7 +23,7 @@ const Categories = ({ showCategories }: { showCategories: boolean }) => {
             position: "absolute",
             top: "4rem",
             width: "100vw",
-            zIndex: 30,
+            zIndex: 90,
             paddingTop: "2em",
             // paddingLeft: "0 4.4em",
           }}
