@@ -31,7 +31,6 @@ const Home = () => {
       >
         <Hero />
         <Store />
-        
       </main>
     </>
   );
