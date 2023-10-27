@@ -39,13 +39,17 @@ class Api {
       data,
     });
   };
-  getTags = (payload: any) => {
-    const url = "/v1/cars/filter";
-    return this.publicRequest(url, METHOD.POST, payload);
+  getTags = () => {
+    const url = "/api/tags";
+    return this.publicRequest(url, METHOD.GET, null);
   };
 
   getRestaurants = (payload: any) => {
-    const url = "/v1/cars/filter";
+    const url = "/api/restaurant";
+    return this.publicRequest(url, METHOD.POST, payload);
+  };
+  filterRestaurants = (payload: any) => {
+    const url = "/api/restaurant/filter";
     return this.publicRequest(url, METHOD.POST, payload);
   };
 }

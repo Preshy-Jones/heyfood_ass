@@ -1,10 +1,19 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { tags } from "./FoodList";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { getTags } from "@/features/restaurant/restaurantSlice";
 
 const Categories = ({ showCategories }: { showCategories: boolean }) => {
+  const { tags, tagsLoading } = useAppSelector((state) => state.restaurant);
+  const dispatch = useAppDispatch();
+  let skeletonMultiplier = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+  useEffect(() => {
+    dispatch(getTags());
+  }, []);
+
   return (
     <Box>
       {showCategories && (
@@ -60,7 +69,7 @@ const Categories = ({ showCategories }: { showCategories: boolean }) => {
                       ml: "1.2em",
                     }}
                   >
-                    {tag.name}
+                    {tag.title}
                   </Typography>
                 </Stack>
               );

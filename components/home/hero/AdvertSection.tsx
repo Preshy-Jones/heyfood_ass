@@ -18,9 +18,13 @@ const AdvertSection = () => {
     const scrollAmount = carouselRef?.current?.clientWidth;
     const newScrollLeft =
       direction === "next"
-        ? scrollLeft + scrollAmount
-        : scrollLeft - scrollAmount;
+        ? //@ts-ignore
+          scrollLeft + scrollAmount
+        : //@ts-ignore
+          scrollLeft - scrollAmount;
+          //@ts-ignore
     carouselRef.current.scrollLeft = newScrollLeft;
+    //@ts-ignore
     setScrollLeft(newScrollLeft);
   };
   return (

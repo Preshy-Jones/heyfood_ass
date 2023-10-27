@@ -10,9 +10,8 @@ export const fetchRestaurants = async (payload: any) => {
 
 export const fetchTags = async (payload: any) => {
   const api = new Api();
-  const response = await api.getTags(payload);
-  // console.log(response);
-
+  const response = await api.getTags();
+  console.log(response);
   return response.data;
 };
 
