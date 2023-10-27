@@ -6,6 +6,9 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider } from "@mui/material/styles";
 import createEmotionCache from "../utils/createEmotionCache";
 import theme from "../utils/theme";
+import RestaurantProvider from "@/context/users/restaurant-provider";
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 const clientSideEmotionCache = createEmotionCache();
 
 export type NextPageWithLayout = NextPage & {
@@ -22,10 +25,12 @@ export default function App(props: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return getLayout(
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <Provider store={store}>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+    </Provider>
   );
 }

@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Carousel.css */
+.carousel {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  width: 100%;
+  white-space: nowrap;
+  transition: transform 0.5s ease;
+  gap: 10px;
+  position: relative;
+}
+
+.carousel-image {
+  max-width: 30%; /* Adjust the width to display 3 images at once */
+  height: auto;
+  margin-right: 1em;
+  border-top-left-radius: 0.6em;
+  border-top-right-radius: 0.6em;
+  border-bottom-right-radius: 0.6em;
+  border-bottom-left-radius: 0.6em;
+}
+
+.arrows-container {
+}
+/* .left-arrow on hover background #e0e0e0 and animate transition */
+.left-arrow,
+.right-arrow {
+  transition: background-color 0.5s !important;
+}
+.left-arrow:hover,
+.right-arrow:hover {
+  background-color: #e0e0e0 !important;
+}
