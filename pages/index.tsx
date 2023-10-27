@@ -6,6 +6,7 @@ import Hero from "@/components/home/hero";
 import Overlay from "@/components/layouts/Overlay";
 import SideBar from "@/components/layouts/SideBar";
 import { useAppSelector } from "@/store/hooks";
+import NavBar from "@/components/layouts/NavBar";
 
 const poppins = Poppins({
   weight: "400",
@@ -25,6 +26,7 @@ const Home = () => {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <NavBar />
       <main
         className={poppins.className}
         style={{ fontFamily: poppins.style.fontFamily, position: "relative" }}

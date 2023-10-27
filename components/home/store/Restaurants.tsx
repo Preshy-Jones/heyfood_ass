@@ -1,15 +1,29 @@
-import { Box, Grid, IconButton, Stack, Typography } from "@mui/material";
-import React from "react";
+import {
+  Box,
+  Grid,
+  IconButton,
+  Skeleton,
+  Stack,
+  Typography,
+} from "@mui/material";
+import React, { useEffect } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import StarIcon from "@mui/icons-material/Star";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { getRestaurants } from "@/features/restaurant/restaurantSlice";
+import { Restaurant } from "@/types/global";
 
 const Restaurants = () => {
   const { restaurants, restaurantIsLoading } = useAppSelector(
     (state) => state.restaurant
   );
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getRestaurants());
+  }, []);
+
   return (
     <Box>
       <Stack direction={"row"} justifyContent={"space-between"} mb={4}>
@@ -48,33 +62,85 @@ const Restaurants = () => {
           </Stack>
         </Stack>
       </Stack>
-      <Grid container rowSpacing={8} columnSpacing={5}>
-        <Grid item xs={4}>
-          <RestaurantItem />
+      {restaurantIsLoading ? (
+        <Grid container rowSpacing={8} columnSpacing={5}>
+          <Grid item xs={4}>
+            <Skeleton
+              variant="rectangular"
+              width={200}
+              height={80}
+              sx={{
+                mr: "1em",
+              }}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <Skeleton
+              variant="rectangular"
+              width={200}
+              height={80}
+              sx={{
+                mr: "1em",
+              }}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <Skeleton
+              variant="rectangular"
+              width={200}
+              height={80}
+              sx={{
+                mr: "1em",
+              }}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <Skeleton
+              variant="rectangular"
+              width={200}
+              height={80}
+              sx={{
+                mr: "1em",
+              }}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <Skeleton
+              variant="rectangular"
+              width={200}
+              height={80}
+              sx={{
+                mr: "1em",
+              }}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <Skeleton
+              variant="rectangular"
+              width={200}
+              height={80}
+              sx={{
+                mr: "1em",
+              }}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <RestaurantItem />
+      ) : (
+        <Grid container rowSpacing={8} columnSpacing={5}>
+          {restaurants.map((restaurant: Restaurant) => {
+            <Grid item xs={4}>
+              <RestaurantItem item={restaurant} />
+            </Grid>;
+          })}
         </Grid>
-        <Grid item xs={4}>
-          <RestaurantItem />
-        </Grid>
-        <Grid item xs={4}>
-          <RestaurantItem />
-        </Grid>
-        <Grid item xs={4}>
-          <RestaurantItem />
-        </Grid>
-        <Grid item xs={4}>
-          <RestaurantItem />
-        </Grid>
-      </Grid>
+      )}
     </Box>
   );
 };
 
 export default Restaurants;
 
-const RestaurantItem = () => {
+const RestaurantItem = ({ item }: { item: Restaurant }) => {
   return (
     <Box>
       <Box
@@ -91,7 +157,7 @@ const RestaurantItem = () => {
             lineHeight: "1.43",
           }}
         >
-          Toasties - IKOYI
+          {item.title}
         </Typography>
         <Typography
           sx={{
@@ -123,7 +189,7 @@ const RestaurantItem = () => {
               fontSize: "110%",
             }}
           >
-            19+ Ratings
+            {item.ratings.length}+ Ratings
           </Typography>
         </Stack>
       </Box>

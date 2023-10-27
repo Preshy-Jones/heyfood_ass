@@ -4,7 +4,6 @@ export const fetchRestaurants = async (payload: any) => {
   const api = new Api();
   const response = await api.getRestaurants(payload);
   // console.log(response);
-
   return response.data;
 };
 

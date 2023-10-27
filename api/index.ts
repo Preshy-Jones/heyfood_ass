@@ -46,11 +46,11 @@ class Api {
 
   getRestaurants = (payload: any) => {
     const url = "/api/restaurant";
-    return this.publicRequest(url, METHOD.POST, payload);
+    return this.publicRequest(url, METHOD.GET, null);
   };
   filterRestaurants = (payload: any) => {
     const url = "/api/restaurant/filter";
-    return this.publicRequest(url, METHOD.POST, payload);
+    return this.publicRequest(url, METHOD.GET, null);
   };
 }
 

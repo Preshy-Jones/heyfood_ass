@@ -6,6 +6,7 @@ export type Tag = {
 
 export type Restaurant = {
   _id: string;
+  title: string;
   tags: Tag[];
   ratings: {
     rating: number;
