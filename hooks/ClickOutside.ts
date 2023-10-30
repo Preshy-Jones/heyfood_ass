@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const useClickOutside = (handler) => {
+const useClickOutside = (handler: any) => {
   // initialize domNode as a ref with correct typescript definitions
   let domNode1 = useRef<HTMLDivElement>(null);
 
   let domNode2 = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    let maybeHandler = (event) => {
+    let maybeHandler = (event: any) => {
       if (
         domNode1.current &&
         !domNode1.current.contains(event.target) &&
